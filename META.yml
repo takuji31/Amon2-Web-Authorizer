@@ -1,0 +1,25 @@
+---
+abstract: 'Amon2 authorization plugin'
+author:
+  - 'Nishibayashi Takuji <takuji31@gmail.com>'
+build_requires:
+  Test::More: 0.98
+configure_requires:
+  Module::Build: 0.4003
+dynamic_config: 1
+generated_by: 'Module::Build version 0.3901, CPAN::Meta::Converter version 2.120921'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Amon2-Authorizer
+provides:
+  Amon2::Authorizer:
+    file: lib/Amon2/Authorizer.pm
+    version: 0.01
+requires:
+  Amon2: 3.00
+  perl: v5.12.1
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01

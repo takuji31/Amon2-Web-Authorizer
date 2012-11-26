@@ -1,0 +1,8 @@
+#!perl
+# This file is managed by /usr/local/perlbrew/perlbrew/perls/perl-5.16.2/bin/dim.
+{
+  dist => 'Amon2::Authorizer',
+  distdir => 'Amon2-Authorizer',
+  module => 'Amon2::Authorizer',
+  template => 'Default'
+}
