@@ -61,7 +61,10 @@
 # skip author's files
 \bauthor\b
 
+\.sw(?:p|o)
 \.bs$
 \.o(?:|bj|ld|ut)$
 ^nytprof
 ^MYMETA\.
+\.shipit
+\.dimconfig

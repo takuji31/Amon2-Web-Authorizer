@@ -1,5 +1,5 @@
 package Amon2::Authorizer;
-use 5.008_001;
+use 5.012_001;
 use strict;
 use warnings;
 
