@@ -12,10 +12,13 @@ license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
-name: Amon2-Authorizer
+name: Amon2-Web-Authorizer
 provides:
-  Amon2::Authorizer:
-    file: lib/Amon2/Authorizer.pm
+  Amon2::Plugin::Web::Authorizer:
+    file: lib/Amon2/Plugin/Web/Authorizer.pm
+    version: 0
+  Amon2::Web::Authorizer:
+    file: lib/Amon2/Web/Authorizer.pm
     version: 0.01
 requires:
   Amon2: 3.00

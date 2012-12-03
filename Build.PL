@@ -5,7 +5,7 @@ my $build = Module::Build->new(
     dist_author => 'Nishibayashi Takuji <takuji31@gmail.com>',
     dist_abstract => 'Amon2 authorization plugin',
     license     => 'perl',
-    module_name => 'Amon2::Authorizer',
+    module_name => 'Amon2::Web::Authorizer',
     configure_requires => {'Module::Build' => '0.38'},
     requires => {
         'perl'       => '5.12.1',
