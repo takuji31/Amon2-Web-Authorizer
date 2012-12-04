@@ -1,9 +1,11 @@
 #!perl -w
 use strict;
-use Test::More tests => 1;
+
+use t::Util;
+use Test::More;
+use Test::LoadAllModules;
 
 BEGIN {
-    use_ok 'Amon2::Web::Authorizer';
+    use_ok 'Amon2::Plugin::Web::Authorizer';
+    all_uses_ok(search_path => 'Amon2::Web::Authorizer');
 }
-
-diag "Testing Amon2::Web::Authorizer/$Amon2::Web::Authorizer::VERSION";

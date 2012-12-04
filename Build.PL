@@ -12,6 +12,7 @@ my $build = Module::Build->new(
         'Amon2'      => '3.00',
     },
     build_requires => {
+        'Test::LoadAllModules' => '0.021',
         'Test::More' => '0.98',
     },
     test_files => (-d '.git/' || $ENV{RELEASE_TESTING}) ? 't/ xt/' : 't/',

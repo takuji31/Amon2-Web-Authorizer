@@ -27,3 +27,4 @@ cover_db*
 *.gcov
 *.stackdump
 _build/
+extlib/
