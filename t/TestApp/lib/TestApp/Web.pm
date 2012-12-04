@@ -73,11 +73,6 @@ __PACKAGE__->load_plugin(
         },
     },
 );
-# load plugins
-__PACKAGE__->load_plugins(
-    'Web::CSRFDefender',
-);
-
 # for your security
 __PACKAGE__->add_trigger(
     AFTER_DISPATCH => sub {
