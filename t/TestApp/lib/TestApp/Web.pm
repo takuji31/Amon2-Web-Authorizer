@@ -59,7 +59,7 @@ __PACKAGE__->load_plugin(
         error_callbacks =>{
             login => sub {
                 my ($c, $args) = @_;
-                return $c->redirect('/login');
+                return $c->redirect('/account/login');
             },
             default => sub {
                 my ($c, $args) = @_;

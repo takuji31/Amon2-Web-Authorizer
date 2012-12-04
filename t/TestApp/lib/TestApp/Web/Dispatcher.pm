@@ -15,8 +15,10 @@ post '/account/logout' => sub {
     return $c->redirect('/');
 };
 
-get '/login' => sub {
+get '/account/login' => sub {
     my ($c, $args) = @_;
+    my $user_id = $c->req->param('user_id');
+    $c->session->set(user_id => $user_id);
     $c->render('index.tt');
 };
 
