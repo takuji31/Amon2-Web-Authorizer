@@ -8,7 +8,8 @@ use parent qw/Amon2::Web::Authorizer::Config/;
 
 sub get_config {
     my ($class, $pkg, $opts) = @_;
-    
+    my $config = $opts->{data} // [];
+    return $config;
 }
 
 1;

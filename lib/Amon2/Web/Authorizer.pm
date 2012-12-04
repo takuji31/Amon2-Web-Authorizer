@@ -25,8 +25,8 @@ This document describes Amon2::Web::Authorizer version 0.01.
             config => 'List',
             data   => [
                 '/user/*' => {
-                    module => 'Session',
-                    opt    => {
+                    module  => 'Session',
+                    options => {
                         key => 'user_id',
                     },
                     on_error => 'login',
