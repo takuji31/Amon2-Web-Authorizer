@@ -50,10 +50,8 @@ __PACKAGE__->load_plugin(
         data   => [
             '/user/*' => {
                 module => 'Session',
-                opt    => {
-                    key => 'user_id',
-                },
                 on_error => 'login',
+                key => 'user_id',
             },
         ],
         error_callbacks =>{
