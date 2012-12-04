@@ -16,7 +16,9 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::LoadAllModules" : "0.021",
+            "Test::More" : "0.98",
+            "Test::WWW::Mechanize::PSGI" : "0"
          }
       },
       "configure" : {
