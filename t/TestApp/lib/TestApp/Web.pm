@@ -63,7 +63,6 @@ __PACKAGE__->load_plugin(
 );
 # load plugins
 __PACKAGE__->load_plugins(
-    'Web::FillInFormLite',
     'Web::CSRFDefender',
 );
 
