@@ -15,4 +15,9 @@ post '/account/logout' => sub {
     return $c->redirect('/');
 };
 
+get '/login' => sub {
+    my ($c, $args) = @_;
+    $c->render('index.tt');
+};
+
 1;

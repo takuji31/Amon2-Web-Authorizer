@@ -46,18 +46,32 @@ use Text::Xslate;
 
 __PACKAGE__->load_plugin(
     'Web::Authorizer' => {
-        config => 'Simple',
-        mode_name => 'auth',
-        on_error => sub {
-            my ($c, ) = @_;
-            $c->create_response(
-                401 => [
-                    'Content-Type' => 'text/plain',
-                    'Content-Length' => 11
-                ],[
-                    'Unauthorized',
-                ]
-            );
+        config => 'List',
+        data   => [
+            '/user/*' => {
+                module => 'Session',
+                opt    => {
+                    key => 'user_id',
+                },
+                on_error => 'login',
+            },
+        ],
+        error_callbacks =>{
+            login => sub {
+                my ($c, $args) = @_;
+                return $c->redirect('/login');
+            },
+            default => sub {
+                my ($c, $args) = @_;
+                $c->create_response(
+                    401 => [
+                        'Content-Type' => 'text/plain',
+                        'Content-Length' => 11
+                    ],[
+                        'Unauthorized',
+                    ]
+                );
+            },
         },
     },
 );
