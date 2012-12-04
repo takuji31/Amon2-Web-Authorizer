@@ -29,7 +29,6 @@ sub init {
         croak("Error callback $on_error not found") unless $on_error_callback;
         $route->{on_error} = $on_error_callback;
 
-        $route->{options} //= {};
         $router->connect($path, $route);
     }
 
