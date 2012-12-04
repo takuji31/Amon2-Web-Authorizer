@@ -22,6 +22,11 @@ post '/account/logout' => sub {
 
 get '/account/login' => sub {
     my ($c, $args) = @_;
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['please login']);
+};
+
+post '/account/login' => sub {
+    my ($c, $args) = @_;
     my $user_id = $c->req->param('user_id');
     $c->session->set(user_id => $user_id);
     $c->redirect('/');

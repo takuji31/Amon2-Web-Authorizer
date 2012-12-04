@@ -14,6 +14,7 @@ my $build = Module::Build->new(
     build_requires => {
         'Test::LoadAllModules' => '0.021',
         'Test::More' => '0.98',
+        'Test::WWW::Mechanize::PSGI' => '0',
     },
     test_files => (-d '.git/' || $ENV{RELEASE_TESTING}) ? 't/ xt/' : 't/',
     recursive_test_files => 1,
