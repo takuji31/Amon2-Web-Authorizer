@@ -14,6 +14,11 @@ get '/user/only' => sub {
     $c->create_response(200, ['Content-Type' => 'text/plain'], ['user only!']);
 };
 
+get '/developer/only' => sub {
+    my ($c, $args) = @_;
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['user only!']);
+};
+
 post '/account/logout' => sub {
     my ($c) = @_;
     $c->session->expire();
@@ -23,6 +28,12 @@ post '/account/logout' => sub {
 get '/account/login' => sub {
     my ($c, $args) = @_;
     $c->create_response(200, ['Content-Type' => 'text/plain'], ['please login']);
+};
+
+get '/account/developer' => sub {
+    my ($c, $args) = @_;
+    $c->session->set(is_dev => 1);
+    $c->redirect('/');
 };
 
 post '/account/login' => sub {

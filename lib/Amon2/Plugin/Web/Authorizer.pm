@@ -51,6 +51,21 @@ sub init {
     );
 }
 
+sub _make_module_option {
+    my ($class, $opt) = @_;
+    
+}
+
+sub _make_or_module {
+    my ($class, $opts) = @_;
+    
+}
+
+sub _make_and_module {
+    my ($class, $opts) = @_;
+    
+}
+
 sub default_error_callback {
     my ($c, $args) = @_;
     return $c->create_response(

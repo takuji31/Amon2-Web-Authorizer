@@ -48,10 +48,39 @@ __PACKAGE__->load_plugin(
     'Web::Authorizer' => {
         config => 'List',
         data   => [
-            '/user/*' => {
-                module => 'Session',
+            '/user/mypage' => {
+                modules => [
+                    'Session' => {
+                        key => 'user_id',
+                    },
+                ],
                 on_error => 'login',
-                key => 'user_id',
+            },
+            '/user/only' => {
+                modules => [
+                    'or' => [
+                        'Session' => {
+                            key => 'user_id',
+                        },
+                        'Session' => {
+                            key => 'is_dev',
+                        },
+                    ],
+                ],
+                on_error => 'login',
+            },
+            '/developer/*' => {
+                modules => [
+                    'and' => [
+                        'Session' => {
+                            key => 'user_id',
+                        },
+                        'Session' => {
+                            key => 'is_dev',
+                        },
+                    ],
+                ],
+                on_error => 'login',
             },
         ],
         error_callbacks =>{
