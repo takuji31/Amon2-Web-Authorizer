@@ -19,6 +19,9 @@ sub init {
 
     my $router = Router::Simple->new;
 
+    $opts->{error_callbacks} //= {};
+    $opts->{error_callbacks}->{default} //= \&default_error_callback;
+
     while (my ($path, $route) = splice(@$auth_config, 0, 2)) {
 
         croak("module option is required") unless $route->{module};
@@ -45,6 +48,18 @@ sub init {
             }
             return;
         },
+    );
+}
+
+sub default_error_callback {
+    my ($c, $args) = @_;
+    return $c->create_response(
+        401 => [
+            'Content-Type' => 'text/plain',
+            'Content-Length' => 11
+        ],[
+            'Unauthorized',
+        ]
     );
 }
 
