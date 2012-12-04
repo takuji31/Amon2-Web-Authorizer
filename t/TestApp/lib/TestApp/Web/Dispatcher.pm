@@ -6,7 +6,12 @@ use Amon2::Web::Dispatcher::Lite;
 
 any '/' => sub {
     my ($c) = @_;
-    return $c->render('index.tt');
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['top']);
+};
+
+get '/user/only' => sub {
+    my ($c, $args) = @_;
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['user only!']);
 };
 
 post '/account/logout' => sub {
@@ -19,7 +24,7 @@ get '/account/login' => sub {
     my ($c, $args) = @_;
     my $user_id = $c->req->param('user_id');
     $c->session->set(user_id => $user_id);
-    $c->render('index.tt');
+    $c->redirect('/');
 };
 
 1;
