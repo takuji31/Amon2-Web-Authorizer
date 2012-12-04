@@ -6,4 +6,6 @@ use File::Basename;
 use File::Spec;
 use lib File::Spec->catdir(dirname(__FILE__), 'TestApp', 'lib');
 
+$ENV{PLACK_ENV} = 'test';
+
 1;
