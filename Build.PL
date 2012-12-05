@@ -10,6 +10,7 @@ my $build = Module::Build->new(
     requires => {
         'perl'       => '5.12.1',
         'Amon2'      => '3.00',
+        'YAML::Syck' => '0',
     },
     build_requires => {
         'Test::LoadAllModules' => '0.021',
