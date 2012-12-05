@@ -4,7 +4,6 @@ use warnings;
 
 use File::Basename;
 use File::Spec;
-use lib File::Spec->catdir(dirname(__FILE__), 'TestApp', 'lib');
 use Plack::Util;
 
 use Test::More;
