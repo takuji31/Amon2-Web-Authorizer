@@ -16,7 +16,6 @@ META.json
 META.yml
 README
 t/000_load.t
-t/001_basic.t
 t/001_list.t
 t/002_file.t
 t/003_yaml.t
