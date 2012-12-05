@@ -13,14 +13,58 @@ subtest "not login" => sub {
     $mech->content_is('please login' => 'Not logined and redirect');
 };
 
-subtest "logined" => sub {
-    $mech->post_ok('/account/login', {user_id => 1}, 'do login');
+subtest "single" => sub {
+
+    $mech->get_ok('/account/user', 'login user');
     $mech->get_ok('/user/only');
     $mech->content_is('user only!' => 'Logined');
+
+    $mech->get_ok('/account/logout', 'logout');
+
+    $mech->get_ok('/account/developer', 'login developer');
+    $mech->get_ok('/user/only');
+    $mech->content_is('please login' => 'developer cannot access mypage');
+};
+
+subtest "or" => sub {
+    $mech->get_ok('/account/logout', 'logout');
+
+    $mech->get_ok('/account/user', 'login user');
+    $mech->get_ok('/user/mypage');
+    $mech->content_is('mypage' => 'Logined');
+
+    $mech->get_ok('/account/logout', 'logout');
+
+    $mech->get_ok('/account/developer', 'login developer');
+    $mech->get_ok('/user/mypage');
+    $mech->content_is('mypage' => 'Logined');
+
+    $mech->get_ok('/account/user', 'login user');
+    $mech->get_ok('/user/mypage');
+    $mech->content_is('mypage' => 'Logined');
+
+};
+
+subtest "and" => sub {
+    $mech->get_ok('/account/logout', 'logout');
+
+    $mech->get_ok('/account/user', 'login user');
+    $mech->get_ok('/developer/only');
+    $mech->content_is('please login' => 'user cannot access developer only page');
+
+    $mech->get_ok('/account/logout', 'logout');
+
+    $mech->get_ok('/account/developer', 'login developer');
+    $mech->get_ok('/developer/only');
+    $mech->content_is('please login' => 'this is wrong user?');
+
+    $mech->get_ok('/account/user', 'login user');
+    $mech->get_ok('/developer/only');
+    $mech->content_is('developer only!' => 'developer can access developer only page');
 };
 
 subtest "logouted" => sub {
-    $mech->post_ok('/account/logout', 'do logout');
+    $mech->get_ok('/account/logout', 'do logout');
     $mech->get_ok('/user/only');
     $mech->content_is('please login' => 'Logouted');
 };

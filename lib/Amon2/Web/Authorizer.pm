@@ -5,6 +5,26 @@ use warnings;
 our $VERSION = '0.01';
 
 use Carp;
+use Plack::Util;
+use Amon2::Web::Authorizer::Logical;
+
+sub new {
+    my ($class, $opts) = @_;
+    $opts //= {};
+    bless $opts, $class;
+}
+
+sub load {
+    my ($class, $pkg, $opts) = @_;
+    if ($pkg eq 'and' || $pkg eq 'or') {
+        $opts //= [];
+        return Amon2::Web::Authorizer::Logical->new($pkg => $opts);
+    } else {
+        $opts //= {};
+        $pkg = Plack::Util::load_class($pkg, __PACKAGE__);
+        return $pkg->new($opts);
+    }
+}
 
 sub authorize {
     croak("Please override authorize method");

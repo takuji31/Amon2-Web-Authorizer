@@ -9,6 +9,11 @@ any '/' => sub {
     $c->create_response(200, ['Content-Type' => 'text/plain'], ['top']);
 };
 
+get '/user/mypage' => sub {
+    my ($c, $args) = @_;
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['mypage']);
+};
+
 get '/user/only' => sub {
     my ($c, $args) = @_;
     $c->create_response(200, ['Content-Type' => 'text/plain'], ['user only!']);
@@ -16,10 +21,10 @@ get '/user/only' => sub {
 
 get '/developer/only' => sub {
     my ($c, $args) = @_;
-    $c->create_response(200, ['Content-Type' => 'text/plain'], ['user only!']);
+    $c->create_response(200, ['Content-Type' => 'text/plain'], ['developer only!']);
 };
 
-post '/account/logout' => sub {
+get '/account/logout' => sub {
     my ($c) = @_;
     $c->session->expire();
     return $c->redirect('/');
@@ -36,10 +41,9 @@ get '/account/developer' => sub {
     $c->redirect('/');
 };
 
-post '/account/login' => sub {
+get '/account/user' => sub {
     my ($c, $args) = @_;
-    my $user_id = $c->req->param('user_id');
-    $c->session->set(user_id => $user_id);
+    $c->session->set(is_user => 1);
     $c->redirect('/');
 };
 
