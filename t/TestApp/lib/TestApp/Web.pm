@@ -15,7 +15,7 @@ if ($ENV{TEST_TYPE} && $ENV{TEST_TYPE} eq 'file') {
     __PACKAGE__->load_plugin(
         'Web::Authorizer' => {
             config => 'File',
-            file   => 'auth',
+            file   => 'auth.pl',
             error_callbacks =>{
                 login => sub {
                     my ($c, $args) = @_;
