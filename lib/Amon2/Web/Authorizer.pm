@@ -49,27 +49,45 @@ This document describes Amon2::Web::Authorizer version 0.01.
         'Web::Authorizer' => {
             config => 'List',
             data   => [
-                '/user/*' => {
-                    module  => 'Session',
+                '/user/only' => {
+                    modules => [
+                        'Session' => {
+                            key => 'is_user',
+                        },
+                    ],
                     on_error => 'login',
-                    key => 'user_id',
+                },
+                '/user/mypage' => {
+                    modules => [
+                        'or' => [
+                            'Session' => {
+                                key => 'is_user',
+                            },
+                            'Session' => {
+                                key => 'is_dev',
+                            },
+                        ],
+                    ],
+                    on_error => 'login',
+                },
+                '/developer/only' => {
+                    modules => [
+                        'and' => [
+                            'Session' => {
+                                key => 'is_user',
+                            },
+                            'Session' => {
+                                key => 'is_dev',
+                            },
+                        ],
+                    ],
+                    on_error => 'login',
                 },
             ],
             error_callbacks =>{
                 login => sub {
                     my ($c, $args) = @_;
-                    return $c->redirect('/login');
-                },
-                default => sub {
-                    my ($c, $args) = @_;
-                    $c->create_response(
-                        401 => [
-                            'Content-Type' => 'text/plain',
-                            'Content-Length' => 11
-                        ],[
-                            'Unauthorized',
-                        ]
-                    );
+                    return $c->redirect('/account/login');
                 },
             },
         },

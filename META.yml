@@ -22,8 +22,24 @@ provides:
   Amon2::Web::Authorizer:
     file: lib/Amon2/Web/Authorizer.pm
     version: 0.01
+  Amon2::Web::Authorizer::Config:
+    file: lib/Amon2/Web/Authorizer/Config.pm
+    version: 0
+  Amon2::Web::Authorizer::Config::File:
+    file: lib/Amon2/Web/Authorizer/Config/File.pm
+    version: 0
+  Amon2::Web::Authorizer::Config::List:
+    file: lib/Amon2/Web/Authorizer/Config/List.pm
+    version: 0
+  Amon2::Web::Authorizer::Logical:
+    file: lib/Amon2/Web/Authorizer/Logical.pm
+    version: 0
+  Amon2::Web::Authorizer::Session:
+    file: lib/Amon2/Web/Authorizer/Session.pm
+    version: 0
 requires:
   Amon2: 3.00
+  YAML::Syck: 0
   perl: v5.12.1
 resources:
   license: http://dev.perl.org/licenses/
