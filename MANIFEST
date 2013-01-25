@@ -1,4 +1,3 @@
-.proverc
 Build.PL
 Changes
 lib/Amon2/Plugin/Web/Authorizer.pm
