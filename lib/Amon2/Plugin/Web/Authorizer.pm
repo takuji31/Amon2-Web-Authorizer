@@ -25,7 +25,7 @@ sub init {
     while (my ($path, $auth_opts) = splice(@$auth_config, 0, 2)) {
 
         croak("modules or authorizer option is required") unless $auth_opts->{modules} || $auth_opts->{authorizer};
-        $auth_opts->{authorizer} = Amon2::Web::Authorizer->load(@{delete $auth_opts->{modules}});
+        $auth_opts->{authorizer} = Amon2::Web::Authorizer->load(@{delete $auth_opts->{modules}}) if exists $auth_opts->{modules};
 
         my $on_error = $auth_opts->{on_error} // 'default';
         my $on_error_callback = ref $on_error && ref $on_error eq 'CODE' ? $on_error : $opts->{error_callbacks}{$on_error};
